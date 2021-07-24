@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href ="css/base2.css" >
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="js/encoding.js"></script>
+<title>サンプル</title>
+</head>
+<body>
+
+<h2>チャットルーム！</h2>
+<p>お気軽に参加してください！</p>
+<p>
+<textarea name="" cols="30" rows="4"  id="nameText"></textarea>
+<input type="button" value="送信"  id="checkButton">
+</p>
+
+<p id="msg"></p>
+<p id=red>現在は使用できません</p>
+
+<script>
+    
+function butotnClick(){
+  msg.innerText = '風吹けば名無しさん(??:??:??)　　' + nameText.value + '';
+
+}
+
+let nameText = document.getElementById('nameText');
+nameText.value = '';
+let msg = document.getElementById('msg');
+
+let checkButton = document.getElementById('checkButton');
+checkButton.addEventListener('click', butotnClick);
+
+var str2array = function(str) {
+        var array = [],i,il=str.length;
+        for(i=0;i<il;i++) array.push(str.charCodeAt(i));
+    return array;
+    };
+    var str = "ここが変換されて文字化ける",
+    array = str2array( str ),
+        sjis_array = Encoding.convert(array, "SJIS", "UNICODE"),
+        sjis       = Encoding.codeToString( sjis_array );
+    alert(sjis);
+
+
+</script>
+
+</body>
+</html>
